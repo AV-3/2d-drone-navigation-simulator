@@ -2,13 +2,12 @@
 #include <vector>
 #include <chrono>
 #include <thread>
-#include <fstream> // For file output
+#include <fstream>
 #include "Drone.h"
 #include "Vector2D.h"
 #include "PIDController.h"
 
 int main() {
-    // --- Setup ---
     Drone drone;
     std::vector<Vector2D> waypoints = {{50.0, 50.0}, {50.0, 100.0}, {100.0, 100.0}, {100.0, 50.0}, {0.0, 0.0}};
     size_t current_waypoint_index = 0;
@@ -20,13 +19,12 @@ int main() {
     const double dt = 0.1;
     const double waypoint_threshold = 2.0;
 
-    // --- File Logging Setup ---
     std::ofstream trajectory_file;
-    trajectory_file.open("trajectory.csv");
+    trajectory_file.open("../trajectory.csv");
     trajectory_file << "time,x,y,target_x,target_y\n"; // CSV Header
 
-    std::cout << "--- Drone Waypoint Navigation ---" << std::endl;
-    std::cout << "Simulation data will be saved to trajectory.csv" << std::endl;
+    std::cout << "Drone Waypoint Navigation Started..." << std::endl;
+    std::cout << "Simulation data will be saved to trajectory.csv in project root." << std::endl;
 
     // --- Simulation Loop ---
     for (double t = 0; t < simulation_time; t += dt) {
@@ -38,7 +36,6 @@ int main() {
         Vector2D target_position = waypoints[current_waypoint_index];
         Vector2D current_pos = drone.getPosition();
 
-        // Log data to file
         trajectory_file << t << "," << current_pos.x << "," << current_pos.y << ","
                         << target_position.x << "," << target_position.y << "\n";
 
@@ -56,6 +53,6 @@ int main() {
     }
 
     trajectory_file.close();
-    std::cout << "Simulation finished. Trajectory saved to trajectory.csv" << std::endl;
+    std::cout << "Simulation finished. Trajectory saved to trajectory.csv in project root." << std::endl;
     return 0;
 }

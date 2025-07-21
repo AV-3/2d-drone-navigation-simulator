@@ -10,7 +10,6 @@ public:
     // Updates the drone's state based on applied force and time step
     void update(Vector2D force, double dt);
 
-    // Getter for the drone's current position
     Vector2D getPosition() const;
 
 private:
@@ -20,4 +19,4 @@ private:
     double drag_coefficient;
 };
 
-#endif // DRONE_H
+#endif

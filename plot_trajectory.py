@@ -3,18 +3,11 @@ import matplotlib.pyplot as plt
 import os
 
 def plot_simulation_data():
-    """
-    Reads the trajectory.csv file from the correct build directory 
-    and generates plots to visualize the drone's performance.
-    """
     script_dir = os.path.dirname(os.path.abspath(__file__))
 
-    # Construct the full path to the CSV file
-    # This assumes the script is in the root and the csv is in build/Debug
-    csv_path = os.path.join(script_dir, 'build', 'Debug', 'trajectory.csv')
+    csv_path = os.path.join(script_dir, 'trajectory.csv')
 
     try:
-        # Read the data using pandas
         df = pd.read_csv(csv_path)
     except FileNotFoundError:
         print(f"Error: Could not find trajectory.csv at '{csv_path}'")
@@ -26,13 +19,13 @@ def plot_simulation_data():
     waypoints_x = waypoints_data['target_x'].tolist()
     waypoints_y = waypoints_data['target_y'].tolist()
 
-    # --- Plot 1: 2D Trajectory Path ---
+    # --- Plot 1: Trajectory Path ---
     plt.figure(figsize=(10, 10))
     
-    # Plot the actual path of the drone
+    # Plot drone path
     plt.plot(df['x'], df['y'], label='Drone Path', color='blue', linewidth=2)
     
-    # Plot the waypoints
+    # Plot waypoints
     plt.plot(waypoints_x, waypoints_y, 'go', markersize=10, label='Waypoints', linestyle='None')
     plt.plot(df['x'].iloc[0], df['y'].iloc[0], 'bo', markersize=12, label='Start')
 
@@ -45,7 +38,7 @@ def plot_simulation_data():
     plt.axis('equal')
     plt.show()
 
-    # --- Plot 2: Position vs. Time ---
+    # --- Plot 2: Position vs Time ---
     plt.figure(figsize=(12, 6))
     
     # X position
