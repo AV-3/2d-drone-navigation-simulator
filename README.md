@@ -1,4 +1,3 @@
-# 2d-drone-navigation-simulator
 # 2D Drone Waypoint Navigation Simulator
 This project is a C++ application that simulates the Guidance, Navigation, and Control (GNC) loop for a 2D quadcopter drone. The goal is to autonomously guide the drone through a series of predefined waypoints while subject to simplified physics, including mass and drag.
 
