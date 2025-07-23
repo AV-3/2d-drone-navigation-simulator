@@ -31,7 +31,7 @@ The project is built entirely from scratch to demonstrate a foundational underst
 pip install pandas matplotlib
 ~~~
 
-- Virtual environment (optional but recommended). If you use a Python virtual environment inside the project (e.g., .venv), ensure it is activated before running Python scripts.
+Virtual environment (optional but recommended). If you use a Python virtual environment inside the project (e.g., .venv), ensure it is activated before running Python scripts.
 
 ## Build Instructions
 - Clone the repository:
